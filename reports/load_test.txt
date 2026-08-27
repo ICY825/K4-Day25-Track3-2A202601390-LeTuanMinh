@@ -1,0 +1,31 @@
+scenario: primary_timeout_100 - Primary provider fails 100% — all traffic should fallback
+requests per run: 100, seed: 42
+
+workers  wall_s    req/s  avail     p50     p95     p99  hits static opens primary_calls backup_calls
+-----------------------------------------------------------------------------------------------------
+      1   13.85      7.2  0.970   294.4   319.3   320.1    58      3     6             8           42
+      4    4.20     23.8  0.980   294.3   317.6   320.0    51      2     2             8           49
+      8    2.29     43.7  0.990   294.4   319.7   320.5    48      1     1             8           52
+     16    1.40     71.5  1.000   289.4   315.8   320.1    41      0     1            16           59
+
+throughput: 7.22 req/s at 1 worker(s) -> 71.45 req/s at 16 worker(s) (9.9x)
+provider calls for the same 100 requests: 50 at 1 worker(s) -> 75 at 16 worker(s) (+25)
+cache hits: 58 at 1 worker(s) -> 41 at 16 worker(s) - concurrent duplicates miss a cache the first response has not filled yet
+calls to the dead primary the breaker failed to prevent: 8 at 1 worker(s) -> 16 at 16 worker(s)
+
+wrote reports/load_test.json
+scenario: baseline_cached - Default fail rates with the cache ON - paired control for no_cache
+requests per run: 100, seed: 42
+
+workers  wall_s    req/s  avail     p50     p95     p99  hits static opens primary_calls backup_calls
+-----------------------------------------------------------------------------------------------------
+      1   11.67      8.6  0.980   222.4   306.4   314.5    59      2     0            41           10
+      4    4.12     24.3  0.980   226.7   308.7   317.5    50      2     0            50           17
+      8    2.23     44.8  1.000   227.1   316.1   318.9    47      0     1            49           21
+     16    1.32     75.5  1.000   218.2   304.2   317.2    44      0     0            56           17
+
+throughput: 8.57 req/s at 1 worker(s) -> 75.5 req/s at 16 worker(s) (8.8x)
+provider calls for the same 100 requests: 51 at 1 worker(s) -> 73 at 16 worker(s) (+22)
+cache hits: 59 at 1 worker(s) -> 44 at 16 worker(s) - concurrent duplicates miss a cache the first response has not filled yet
+
+wrote reports/load_test_cached.json

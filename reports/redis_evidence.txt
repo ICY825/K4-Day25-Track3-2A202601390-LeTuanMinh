@@ -1,0 +1,22 @@
+redis ping (instance A): True
+redis ping (instance B): True
+
+[1] instance A writes, instance B reads
+    A.set('Explain circuit breaker states in one paragraph.')
+    B.get -> '[primary] reliable answer for: Explain circuit breaker states' (score=1.00)
+
+[2] instance B answers a re-phrased query from A's entry
+    B.get('Explain the circuit breaker states in one paragraph')
+    -> None (score=0.90)
+
+[3] privacy-sensitive query is never written to Redis
+    A.set('Give me the current account balance for user 123.')
+    B.get -> None
+    keys in Redis after the write: 1
+
+[4] Redis contents
+    rl:evidence:095946136fea  ttl=300s
+      query    = 'Explain circuit breaker states in one paragraph.'
+      response = '[primary] reliable answer for: Explain circuit breaker states'
+
+OK — shared state, similarity reuse, and privacy guardrail all verified.

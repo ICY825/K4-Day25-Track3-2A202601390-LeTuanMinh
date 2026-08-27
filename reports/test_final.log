@@ -1,0 +1,57 @@
+============================= test session starts =============================
+platform win32 -- Python 3.11.9, pytest-9.1.1, pluggy-1.6.0 -- C:\Users\TUF\Downloads\VINAI\K4-Day25-Track3-2A202601390-LeTuanMinh\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\TUF\Downloads\VINAI\K4-Day25-Track3-2A202601390-LeTuanMinh
+configfile: pyproject.toml
+testpaths: tests
+plugins: cov-7.1.0
+collecting ... collected 46 items
+
+tests/test_cache.py::test_exact_match_returns_hit PASSED                 [  2%]
+tests/test_cache.py::test_similar_query_returns_hit PASSED               [  4%]
+tests/test_cache.py::test_dissimilar_query_returns_miss PASSED           [  6%]
+tests/test_cache.py::test_ttl_expiry PASSED                              [  8%]
+tests/test_cache.py::test_privacy_query_bypasses_cache PASSED            [ 10%]
+tests/test_cache.py::test_privacy_query_not_stored PASSED                [ 13%]
+tests/test_cache.py::test_false_hit_detection_different_years PASSED     [ 15%]
+tests/test_cache.py::test_same_year_not_flagged_as_false_hit PASSED      [ 17%]
+tests/test_cache.py::test_ngram_similarity_scores PASSED                 [ 19%]
+tests/test_circuit_breaker.py::test_starts_closed PASSED                 [ 21%]
+tests/test_circuit_breaker.py::test_opens_after_failure_threshold PASSED [ 23%]
+tests/test_circuit_breaker.py::test_does_not_open_below_threshold PASSED [ 26%]
+tests/test_circuit_breaker.py::test_success_resets_failure_count PASSED  [ 28%]
+tests/test_circuit_breaker.py::test_open_transitions_to_half_open_after_timeout PASSED [ 30%]
+tests/test_circuit_breaker.py::test_half_open_closes_on_success PASSED   [ 32%]
+tests/test_circuit_breaker.py::test_half_open_reopens_on_failure PASSED  [ 34%]
+tests/test_circuit_breaker.py::test_call_raises_circuit_open_error PASSED [ 36%]
+tests/test_circuit_breaker.py::test_call_records_success_and_failure PASSED [ 39%]
+tests/test_circuit_breaker.py::test_transition_log_records_state_changes PASSED [ 41%]
+tests/test_circuit_breaker.py::test_no_duplicate_transitions PASSED      [ 43%]
+tests/test_circuit_breaker.py::test_success_threshold_greater_than_one PASSED [ 45%]
+tests/test_concurrency.py::test_failure_counter_loses_no_updates_under_threads PASSED [ 47%]
+tests/test_concurrency.py::test_circuit_trips_exactly_once_under_threads PASSED [ 50%]
+tests/test_concurrency.py::test_cache_writes_are_not_lost_under_threads PASSED [ 52%]
+tests/test_concurrency.py::test_gateway_serves_every_concurrent_request PASSED [ 54%]
+tests/test_config.py::test_default_config_loads PASSED                   [ 56%]
+tests/test_config.py::test_scenarios_loaded PASSED                       [ 58%]
+tests/test_gateway_contract.py::test_gateway_returns_response_with_route_reason PASSED [ 60%]
+tests/test_gateway_contract.py::test_gateway_falls_back_when_primary_fails PASSED [ 63%]
+tests/test_gateway_contract.py::test_gateway_returns_static_fallback_when_all_fail PASSED [ 65%]
+tests/test_gateway_contract.py::test_gateway_uses_cache PASSED           [ 67%]
+tests/test_metrics.py::test_percentile PASSED                            [ 69%]
+tests/test_metrics.py::test_report_dict_contains_required_metrics PASSED [ 71%]
+tests/test_redis_cache.py::test_redis_connection PASSED                  [ 73%]
+tests/test_redis_cache.py::test_set_and_exact_get PASSED                 [ 76%]
+tests/test_redis_cache.py::test_ttl_expiry PASSED                        [ 78%]
+tests/test_redis_cache.py::test_shared_state_across_instances PASSED     [ 80%]
+tests/test_redis_cache.py::test_privacy_query_not_cached PASSED          [ 82%]
+tests/test_redis_cache.py::test_false_hit_different_years PASSED         [ 84%]
+tests/test_todo_requirements.py::test_similarity_uses_ngrams_not_jaccard XPASS [ 86%]
+tests/test_todo_requirements.py::test_semantic_cache_should_not_false_hit_different_intent XPASS [ 89%]
+tests/test_todo_requirements.py::test_privacy_queries_never_cached XPASS [ 91%]
+tests/test_todo_requirements.py::test_circuit_breaker_denies_when_open XPASS [ 93%]
+tests/test_todo_requirements.py::test_half_open_failure_gives_probe_failure_reason XPASS [ 95%]
+tests/test_todo_requirements.py::test_gateway_routes_through_providers XPASS [ 97%]
+tests/test_todo_requirements.py::test_metrics_csv_export XPASS (Stud...) [100%]
+
+======================== 39 passed, 7 xpassed in 5.71s ========================

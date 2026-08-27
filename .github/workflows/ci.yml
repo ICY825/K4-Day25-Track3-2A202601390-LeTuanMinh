@@ -3,10 +3,39 @@ on: [push, pull_request]
 jobs:
   test:
     runs-on: ubuntu-latest
+
+    # Without a Redis service the six SharedRedisCache tests skip themselves,
+    # so CI would silently prove less than the local run does. This mirrors
+    # docker-compose.yml and makes `make test` exercise the Redis path too.
+    services:
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 5
+
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
       - run: pip install -e ".[dev]"
-      - run: make test
+
+      # Fast static gates first, so a style or typing regression fails in
+      # seconds instead of after the whole suite.
+      - name: Lint
+        run: make lint
+      - name: Type check
+        run: make typecheck
+
+      - name: Tests
+        run: make test
+
+      # Fails if any figure quoted in reports/final_report.md is absent from
+      # the committed metrics artifacts - i.e. if the report has gone stale.
+      - name: Verify report matches the metrics artifacts
+        run: make verify

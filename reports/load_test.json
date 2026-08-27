@@ -1,0 +1,88 @@
+{
+  "scenario": "primary_timeout_100",
+  "description": "Primary provider fails 100% — all traffic should fallback",
+  "requests_per_run": 100,
+  "seed": 42,
+  "runs": [
+    {
+      "workers": 1,
+      "wall_seconds": 13.851,
+      "throughput_rps": 7.22,
+      "availability": 0.97,
+      "error_rate": 0.03,
+      "latency_p50_ms": 294.43,
+      "latency_p95_ms": 319.29,
+      "latency_p99_ms": 320.13,
+      "cache_hits": 58,
+      "fallback_successes": 39,
+      "static_fallbacks": 3,
+      "circuit_open_count": 6,
+      "half_open_exits": 5,
+      "provider_calls": {
+        "primary": 8,
+        "backup": 42
+      },
+      "estimated_cost": 0.014862
+    },
+    {
+      "workers": 4,
+      "wall_seconds": 4.198,
+      "throughput_rps": 23.82,
+      "availability": 0.98,
+      "error_rate": 0.02,
+      "latency_p50_ms": 294.26,
+      "latency_p95_ms": 317.57,
+      "latency_p99_ms": 320.04,
+      "cache_hits": 51,
+      "fallback_successes": 47,
+      "static_fallbacks": 2,
+      "circuit_open_count": 2,
+      "half_open_exits": 1,
+      "provider_calls": {
+        "primary": 8,
+        "backup": 49
+      },
+      "estimated_cost": 0.01593
+    },
+    {
+      "workers": 8,
+      "wall_seconds": 2.287,
+      "throughput_rps": 43.73,
+      "availability": 0.99,
+      "error_rate": 0.01,
+      "latency_p50_ms": 294.35,
+      "latency_p95_ms": 319.66,
+      "latency_p99_ms": 320.54,
+      "cache_hits": 48,
+      "fallback_successes": 51,
+      "static_fallbacks": 1,
+      "circuit_open_count": 1,
+      "half_open_exits": 0,
+      "provider_calls": {
+        "primary": 8,
+        "backup": 52
+      },
+      "estimated_cost": 0.018162
+    },
+    {
+      "workers": 16,
+      "wall_seconds": 1.4,
+      "throughput_rps": 71.45,
+      "availability": 1.0,
+      "error_rate": 0.0,
+      "latency_p50_ms": 289.42,
+      "latency_p95_ms": 315.76,
+      "latency_p99_ms": 320.06,
+      "cache_hits": 41,
+      "fallback_successes": 59,
+      "static_fallbacks": 0,
+      "circuit_open_count": 1,
+      "half_open_exits": 0,
+      "provider_calls": {
+        "primary": 16,
+        "backup": 59
+      },
+      "estimated_cost": 0.0207
+    }
+  ]
+}

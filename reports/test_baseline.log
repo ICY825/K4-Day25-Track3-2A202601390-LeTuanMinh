@@ -1,0 +1,851 @@
+FFFFFFFFFFFFFFFFFFFFF..FFFF...F.F.Fxxxxxxx                               [100%]
+================================== FAILURES ===================================
+________________________ test_exact_match_returns_hit _________________________
+
+    def test_exact_match_returns_hit() -> None:
+        cache = ResponseCache(ttl_seconds=60, similarity_threshold=0.5)
+>       cache.set("hello world", "response")
+
+tests\test_cache.py:12: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <reliability_lab.cache.ResponseCache object at 0x0000021A646ED050>
+query = 'hello world', value = 'response', metadata = None
+
+    def set(self, query: str, value: str, metadata: dict[str, str] | None = None) -> None:
+        """Store a response in cache.
+    
+        TODO(student): Implement with privacy guardrail:
+        1. Return immediately if _is_uncacheable(query)
+        2. Append a CacheEntry to self._entries
+        """
+>       raise NotImplementedError("TODO: implement set()")
+E       NotImplementedError: TODO: implement set()
+
+src\reliability_lab\cache.py:82: NotImplementedError
+_______________________ test_similar_query_returns_hit ________________________
+
+    def test_similar_query_returns_hit() -> None:
+        cache = ResponseCache(ttl_seconds=60, similarity_threshold=0.7)
+>       cache.set("Summarize the refund policy", "Refund policy summary")
+
+tests\test_cache.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <reliability_lab.cache.ResponseCache object at 0x0000021A671E8250>
+query = 'Summarize the refund policy', value = 'Refund policy summary'
+metadata = None
+
+    def set(self, query: str, value: str, metadata: dict[str, str] | None = None) -> None:
+        """Store a response in cache.
+    
+        TODO(student): Implement with privacy guardrail:
+        1. Return immediately if _is_uncacheable(query)
+        2. Append a CacheEntry to self._entries
+        """
+>       raise NotImplementedError("TODO: implement set()")
+E       NotImplementedError: TODO: implement set()
+
+src\reliability_lab\cache.py:82: NotImplementedError
+_____________________ test_dissimilar_query_returns_miss ______________________
+
+    def test_dissimilar_query_returns_miss() -> None:
+        cache = ResponseCache(ttl_seconds=60, similarity_threshold=0.9)
+>       cache.set("Summarize the refund policy", "Refund policy summary")
+
+tests\test_cache.py:28: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <reliability_lab.cache.ResponseCache object at 0x0000021A6715A110>
+query = 'Summarize the refund policy', value = 'Refund policy summary'
+metadata = None
+
+    def set(self, query: str, value: str, metadata: dict[str, str] | None = None) -> None:
+        """Store a response in cache.
+    
+        TODO(student): Implement with privacy guardrail:
+        1. Return immediately if _is_uncacheable(query)
+        2. Append a CacheEntry to self._entries
+        """
+>       raise NotImplementedError("TODO: implement set()")
+E       NotImplementedError: TODO: implement set()
+
+src\reliability_lab\cache.py:82: NotImplementedError
+_______________________________ test_ttl_expiry _______________________________
+
+    def test_ttl_expiry() -> None:
+        cache = ResponseCache(ttl_seconds=1, similarity_threshold=0.5)
+>       cache.set("hello", "world")
+
+tests\test_cache.py:35: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <reliability_lab.cache.ResponseCache object at 0x0000021A646D7890>
+query = 'hello', value = 'world', metadata = None
+
+    def set(self, query: str, value: str, metadata: dict[str, str] | None = None) -> None:
+        """Store a response in cache.
+    
+        TODO(student): Implement with privacy guardrail:
+        1. Return immediately if _is_uncacheable(query)
+        2. Append a CacheEntry to self._entries
+        """
+>       raise NotImplementedError("TODO: implement set()")
+E       NotImplementedError: TODO: implement set()
+
+src\reliability_lab\cache.py:82: NotImplementedError
+______________________ test_privacy_query_bypasses_cache ______________________
+
+    def test_privacy_query_bypasses_cache() -> None:
+        cache = ResponseCache(ttl_seconds=60, similarity_threshold=0.3)
+>       cache.set("Give me the current account balance for user 123", "Balance: $500")
+
+tests\test_cache.py:43: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <reliability_lab.cache.ResponseCache object at 0x0000021A6713F010>
+query = 'Give me the current account balance for user 123'
+value = 'Balance: $500', metadata = None
+
+    def set(self, query: str, value: str, metadata: dict[str, str] | None = None) -> None:
+        """Store a response in cache.
+    
+        TODO(student): Implement with privacy guardrail:
+        1. Return immediately if _is_uncacheable(query)
+        2. Append a CacheEntry to self._entries
+        """
+>       raise NotImplementedError("TODO: implement set()")
+E       NotImplementedError: TODO: implement set()
+
+src\reliability_lab\cache.py:82: NotImplementedError
+________________________ test_privacy_query_not_stored ________________________
+
+    def test_privacy_query_not_stored() -> None:
+        cache = ResponseCache(ttl_seconds=60, similarity_threshold=0.3)
+>       cache.set("password reset for user 456", "Reset link sent")
+
+tests\test_cache.py:50: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <reliability_lab.cache.ResponseCache object at 0x0000021A671E84D0>
+query = 'password reset for user 456', value = 'Reset link sent'
+metadata = None
+
+    def set(self, query: str, value: str, metadata: dict[str, str] | None = None) -> None:
+        """Store a response in cache.
+    
+        TODO(student): Implement with privacy guardrail:
+        1. Return immediately if _is_uncacheable(query)
+        2. Append a CacheEntry to self._entries
+        """
+>       raise NotImplementedError("TODO: implement set()")
+E       NotImplementedError: TODO: implement set()
+
+src\reliability_lab\cache.py:82: NotImplementedError
+__________________ test_false_hit_detection_different_years ___________________
+
+    def test_false_hit_detection_different_years() -> None:
+        cache = ResponseCache(ttl_seconds=60, similarity_threshold=0.3)
+>       cache.set("Summarize refund policy for 2024 deadline", "Old refund policy")
+
+tests\test_cache.py:56: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <reliability_lab.cache.ResponseCache object at 0x0000021A671DD050>
+query = 'Summarize refund policy for 2024 deadline', value = 'Old refund policy'
+metadata = None
+
+    def set(self, query: str, value: str, metadata: dict[str, str] | None = None) -> None:
+        """Store a response in cache.
+    
+        TODO(student): Implement with privacy guardrail:
+        1. Return immediately if _is_uncacheable(query)
+        2. Append a CacheEntry to self._entries
+        """
+>       raise NotImplementedError("TODO: implement set()")
+E       NotImplementedError: TODO: implement set()
+
+src\reliability_lab\cache.py:82: NotImplementedError
+___________________ test_same_year_not_flagged_as_false_hit ___________________
+
+    def test_same_year_not_flagged_as_false_hit() -> None:
+        cache = ResponseCache(ttl_seconds=60, similarity_threshold=0.3)
+>       cache.set("Summarize refund policy for 2024 deadline", "2024 refund policy")
+
+tests\test_cache.py:65: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <reliability_lab.cache.ResponseCache object at 0x0000021A67176090>
+query = 'Summarize refund policy for 2024 deadline'
+value = '2024 refund policy', metadata = None
+
+    def set(self, query: str, value: str, metadata: dict[str, str] | None = None) -> None:
+        """Store a response in cache.
+    
+        TODO(student): Implement with privacy guardrail:
+        1. Return immediately if _is_uncacheable(query)
+        2. Append a CacheEntry to self._entries
+        """
+>       raise NotImplementedError("TODO: implement set()")
+E       NotImplementedError: TODO: implement set()
+
+src\reliability_lab\cache.py:82: NotImplementedError
+________________________ test_ngram_similarity_scores _________________________
+
+    def test_ngram_similarity_scores() -> None:
+>       assert ResponseCache.similarity("hello world", "hello world") == 1.0
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_cache.py:71: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+a = 'hello world', b = 'hello world'
+
+    @staticmethod
+    def similarity(a: str, b: str) -> float:
+        """Compute semantic similarity between two strings.
+    
+        TODO(student): Implement cosine similarity over character n-grams + word tokens.
+        The naive token-overlap (Jaccard) approach loses too much information.
+    
+        Suggested approach:
+        1. If a == b, return 1.0
+        2. Tokenize both strings: split into words + character n-grams (n=3)
+           e.g., "hello world" \u2192 ["hello", "world", "hel", "ell", "llo", "wor", "orl", "rld"]
+        3. Build Counter (bag-of-words) vectors from these tokens
+        4. Compute cosine similarity: dot(a,b) / (|a| * |b|)
+    
+        Hint: Use collections.Counter and math.sqrt.
+        Import them at the top of the file.
+        """
+>       raise NotImplementedError("TODO: implement similarity()")
+E       NotImplementedError: TODO: implement similarity()
+
+src\reliability_lab\cache.py:101: NotImplementedError
+_____________________________ test_starts_closed ______________________________
+
+    def test_starts_closed() -> None:
+        cb = CircuitBreaker("test", failure_threshold=3, reset_timeout_seconds=1)
+        assert cb.state == CircuitState.CLOSED
+>       assert cb.allow_request()
+               ^^^^^^^^^^^^^^^^^^
+
+tests\test_circuit_breaker.py:15: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = CircuitBreaker(name='test', failure_threshold=3, reset_timeout_seconds=1, success_threshold=1, state=<CircuitState.CLOSED: 'closed'>, failure_count=0, success_count=0, opened_at=None, transition_log=[])
+
+    def allow_request(self) -> bool:
+        """Return whether a request should be attempted.
+    
+        TODO(student): Implement the state-based logic:
+        - CLOSED \u2192 always allow
+        - HALF_OPEN \u2192 allow (probe request)
+        - OPEN \u2192 check if reset_timeout_seconds has elapsed since opened_at
+          - If elapsed: transition to HALF_OPEN (use _transition()) and allow
+          - If not elapsed: deny (return False)
+    
+        Use time.monotonic() for elapsed time comparison.
+        """
+>       raise NotImplementedError("TODO: implement allow_request()")
+E       NotImplementedError: TODO: implement allow_request()
+
+src\reliability_lab\circuit_breaker.py:53: NotImplementedError
+_____________________ test_opens_after_failure_threshold ______________________
+
+    def test_opens_after_failure_threshold() -> None:
+        cb = CircuitBreaker("test", failure_threshold=3, reset_timeout_seconds=1)
+        for _ in range(3):
+>           cb.record_failure()
+
+tests\test_circuit_breaker.py:21: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = CircuitBreaker(name='test', failure_threshold=3, reset_timeout_seconds=1, success_threshold=1, state=<CircuitState.CLOSED: 'closed'>, failure_count=0, success_count=0, opened_at=None, transition_log=[])
+
+    def record_failure(self) -> None:
+        """Record a failed call.
+    
+        TODO(student): Implement:
+        1. Increment failure_count, reset success_count to 0
+        2. If in HALF_OPEN state:
+           - Immediately transition to OPEN with reason "probe_failure"
+           - Set opened_at = time.monotonic()
+        3. Else if failure_count >= failure_threshold:
+           - Transition to OPEN with reason "failure_threshold_reached"
+           - Set opened_at = time.monotonic()
+    
+        IMPORTANT: HALF_OPEN and threshold cases need DIFFERENT reasons
+        and must be handled separately (if/elif, not combined with or).
+        """
+>       raise NotImplementedError("TODO: implement record_failure()")
+E       NotImplementedError: TODO: implement record_failure()
+
+src\reliability_lab\circuit_breaker.py:93: NotImplementedError
+_____________________ test_does_not_open_below_threshold ______________________
+
+    def test_does_not_open_below_threshold() -> None:
+        cb = CircuitBreaker("test", failure_threshold=3, reset_timeout_seconds=1)
+>       cb.record_failure()
+
+tests\test_circuit_breaker.py:28: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = CircuitBreaker(name='test', failure_threshold=3, reset_timeout_seconds=1, success_threshold=1, state=<CircuitState.CLOSED: 'closed'>, failure_count=0, success_count=0, opened_at=None, transition_log=[])
+
+    def record_failure(self) -> None:
+        """Record a failed call.
+    
+        TODO(student): Implement:
+        1. Increment failure_count, reset success_count to 0
+        2. If in HALF_OPEN state:
+           - Immediately transition to OPEN with reason "probe_failure"
+           - Set opened_at = time.monotonic()
+        3. Else if failure_count >= failure_threshold:
+           - Transition to OPEN with reason "failure_threshold_reached"
+           - Set opened_at = time.monotonic()
+    
+        IMPORTANT: HALF_OPEN and threshold cases need DIFFERENT reasons
+        and must be handled separately (if/elif, not combined with or).
+        """
+>       raise NotImplementedError("TODO: implement record_failure()")
+E       NotImplementedError: TODO: implement record_failure()
+
+src\reliability_lab\circuit_breaker.py:93: NotImplementedError
+______________________ test_success_resets_failure_count ______________________
+
+    def test_success_resets_failure_count() -> None:
+        cb = CircuitBreaker("test", failure_threshold=3, reset_timeout_seconds=1)
+>       cb.record_failure()
+
+tests\test_circuit_breaker.py:35: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = CircuitBreaker(name='test', failure_threshold=3, reset_timeout_seconds=1, success_threshold=1, state=<CircuitState.CLOSED: 'closed'>, failure_count=0, success_count=0, opened_at=None, transition_log=[])
+
+    def record_failure(self) -> None:
+        """Record a failed call.
+    
+        TODO(student): Implement:
+        1. Increment failure_count, reset success_count to 0
+        2. If in HALF_OPEN state:
+           - Immediately transition to OPEN with reason "probe_failure"
+           - Set opened_at = time.monotonic()
+        3. Else if failure_count >= failure_threshold:
+           - Transition to OPEN with reason "failure_threshold_reached"
+           - Set opened_at = time.monotonic()
+    
+        IMPORTANT: HALF_OPEN and threshold cases need DIFFERENT reasons
+        and must be handled separately (if/elif, not combined with or).
+        """
+>       raise NotImplementedError("TODO: implement record_failure()")
+E       NotImplementedError: TODO: implement record_failure()
+
+src\reliability_lab\circuit_breaker.py:93: NotImplementedError
+______________ test_open_transitions_to_half_open_after_timeout _______________
+
+    def test_open_transitions_to_half_open_after_timeout() -> None:
+        cb = CircuitBreaker("test", failure_threshold=1, reset_timeout_seconds=0.1)
+>       cb.record_failure()
+
+tests\test_circuit_breaker.py:45: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = CircuitBreaker(name='test', failure_threshold=1, reset_timeout_seconds=0.1, success_threshold=1, state=<CircuitState.CLOSED: 'closed'>, failure_count=0, success_count=0, opened_at=None, transition_log=[])
+
+    def record_failure(self) -> None:
+        """Record a failed call.
+    
+        TODO(student): Implement:
+        1. Increment failure_count, reset success_count to 0
+        2. If in HALF_OPEN state:
+           - Immediately transition to OPEN with reason "probe_failure"
+           - Set opened_at = time.monotonic()
+        3. Else if failure_count >= failure_threshold:
+           - Transition to OPEN with reason "failure_threshold_reached"
+           - Set opened_at = time.monotonic()
+    
+        IMPORTANT: HALF_OPEN and threshold cases need DIFFERENT reasons
+        and must be handled separately (if/elif, not combined with or).
+        """
+>       raise NotImplementedError("TODO: implement record_failure()")
+E       NotImplementedError: TODO: implement record_failure()
+
+src\reliability_lab\circuit_breaker.py:93: NotImplementedError
+______________________ test_half_open_closes_on_success _______________________
+
+    def test_half_open_closes_on_success() -> None:
+        cb = CircuitBreaker("test", failure_threshold=1, reset_timeout_seconds=0.1)
+>       cb.record_failure()
+
+tests\test_circuit_breaker.py:54: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = CircuitBreaker(name='test', failure_threshold=1, reset_timeout_seconds=0.1, success_threshold=1, state=<CircuitState.CLOSED: 'closed'>, failure_count=0, success_count=0, opened_at=None, transition_log=[])
+
+    def record_failure(self) -> None:
+        """Record a failed call.
+    
+        TODO(student): Implement:
+        1. Increment failure_count, reset success_count to 0
+        2. If in HALF_OPEN state:
+           - Immediately transition to OPEN with reason "probe_failure"
+           - Set opened_at = time.monotonic()
+        3. Else if failure_count >= failure_threshold:
+           - Transition to OPEN with reason "failure_threshold_reached"
+           - Set opened_at = time.monotonic()
+    
+        IMPORTANT: HALF_OPEN and threshold cases need DIFFERENT reasons
+        and must be handled separately (if/elif, not combined with or).
+        """
+>       raise NotImplementedError("TODO: implement record_failure()")
+E       NotImplementedError: TODO: implement record_failure()
+
+src\reliability_lab\circuit_breaker.py:93: NotImplementedError
+______________________ test_half_open_reopens_on_failure ______________________
+
+    def test_half_open_reopens_on_failure() -> None:
+        cb = CircuitBreaker("test", failure_threshold=1, reset_timeout_seconds=0.1)
+>       cb.record_failure()
+
+tests\test_circuit_breaker.py:64: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = CircuitBreaker(name='test', failure_threshold=1, reset_timeout_seconds=0.1, success_threshold=1, state=<CircuitState.CLOSED: 'closed'>, failure_count=0, success_count=0, opened_at=None, transition_log=[])
+
+    def record_failure(self) -> None:
+        """Record a failed call.
+    
+        TODO(student): Implement:
+        1. Increment failure_count, reset success_count to 0
+        2. If in HALF_OPEN state:
+           - Immediately transition to OPEN with reason "probe_failure"
+           - Set opened_at = time.monotonic()
+        3. Else if failure_count >= failure_threshold:
+           - Transition to OPEN with reason "failure_threshold_reached"
+           - Set opened_at = time.monotonic()
+    
+        IMPORTANT: HALF_OPEN and threshold cases need DIFFERENT reasons
+        and must be handled separately (if/elif, not combined with or).
+        """
+>       raise NotImplementedError("TODO: implement record_failure()")
+E       NotImplementedError: TODO: implement record_failure()
+
+src\reliability_lab\circuit_breaker.py:93: NotImplementedError
+_____________________ test_call_raises_circuit_open_error _____________________
+
+    def test_call_raises_circuit_open_error() -> None:
+        cb = CircuitBreaker("test", failure_threshold=1, reset_timeout_seconds=10)
+>       cb.record_failure()
+
+tests\test_circuit_breaker.py:74: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = CircuitBreaker(name='test', failure_threshold=1, reset_timeout_seconds=10, success_threshold=1, state=<CircuitState.CLOSED: 'closed'>, failure_count=0, success_count=0, opened_at=None, transition_log=[])
+
+    def record_failure(self) -> None:
+        """Record a failed call.
+    
+        TODO(student): Implement:
+        1. Increment failure_count, reset success_count to 0
+        2. If in HALF_OPEN state:
+           - Immediately transition to OPEN with reason "probe_failure"
+           - Set opened_at = time.monotonic()
+        3. Else if failure_count >= failure_threshold:
+           - Transition to OPEN with reason "failure_threshold_reached"
+           - Set opened_at = time.monotonic()
+    
+        IMPORTANT: HALF_OPEN and threshold cases need DIFFERENT reasons
+        and must be handled separately (if/elif, not combined with or).
+        """
+>       raise NotImplementedError("TODO: implement record_failure()")
+E       NotImplementedError: TODO: implement record_failure()
+
+src\reliability_lab\circuit_breaker.py:93: NotImplementedError
+____________________ test_call_records_success_and_failure ____________________
+
+    def test_call_records_success_and_failure() -> None:
+        cb = CircuitBreaker("test", failure_threshold=3, reset_timeout_seconds=1)
+>       result = cb.call(lambda: "ok")
+                 ^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_circuit_breaker.py:81: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = CircuitBreaker(name='test', failure_threshold=3, reset_timeout_seconds=1, success_threshold=1, state=<CircuitState.CLOSED: 'closed'>, failure_count=0, success_count=0, opened_at=None, transition_log=[])
+fn = <function test_call_records_success_and_failure.<locals>.<lambda> at 0x0000021A671A6A20>
+args = (), kwargs = {}
+
+    def call(self, fn: Callable[..., T], *args: object, **kwargs: object) -> T:
+        """Call a function through the circuit breaker.
+    
+        TODO(student): Implement:
+        1. Check allow_request() — if denied, raise CircuitOpenError
+        2. Try calling fn(*args, **kwargs)
+        3. On success: call record_success() and return the result
+        4. On exception: call record_failure() and re-raise
+        """
+>       raise NotImplementedError("TODO: implement call()")
+E       NotImplementedError: TODO: implement call()
+
+src\reliability_lab\circuit_breaker.py:64: NotImplementedError
+__________________ test_transition_log_records_state_changes __________________
+
+    def test_transition_log_records_state_changes() -> None:
+        cb = CircuitBreaker("test", failure_threshold=2, reset_timeout_seconds=0.1)
+>       cb.record_failure()
+
+tests\test_circuit_breaker.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = CircuitBreaker(name='test', failure_threshold=2, reset_timeout_seconds=0.1, success_threshold=1, state=<CircuitState.CLOSED: 'closed'>, failure_count=0, success_count=0, opened_at=None, transition_log=[])
+
+    def record_failure(self) -> None:
+        """Record a failed call.
+    
+        TODO(student): Implement:
+        1. Increment failure_count, reset success_count to 0
+        2. If in HALF_OPEN state:
+           - Immediately transition to OPEN with reason "probe_failure"
+           - Set opened_at = time.monotonic()
+        3. Else if failure_count >= failure_threshold:
+           - Transition to OPEN with reason "failure_threshold_reached"
+           - Set opened_at = time.monotonic()
+    
+        IMPORTANT: HALF_OPEN and threshold cases need DIFFERENT reasons
+        and must be handled separately (if/elif, not combined with or).
+        """
+>       raise NotImplementedError("TODO: implement record_failure()")
+E       NotImplementedError: TODO: implement record_failure()
+
+src\reliability_lab\circuit_breaker.py:93: NotImplementedError
+________________________ test_no_duplicate_transitions ________________________
+
+    def test_no_duplicate_transitions() -> None:
+        cb = CircuitBreaker("test", failure_threshold=1, reset_timeout_seconds=10)
+>       cb.record_failure()
+
+tests\test_circuit_breaker.py:105: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = CircuitBreaker(name='test', failure_threshold=1, reset_timeout_seconds=10, success_threshold=1, state=<CircuitState.CLOSED: 'closed'>, failure_count=0, success_count=0, opened_at=None, transition_log=[])
+
+    def record_failure(self) -> None:
+        """Record a failed call.
+    
+        TODO(student): Implement:
+        1. Increment failure_count, reset success_count to 0
+        2. If in HALF_OPEN state:
+           - Immediately transition to OPEN with reason "probe_failure"
+           - Set opened_at = time.monotonic()
+        3. Else if failure_count >= failure_threshold:
+           - Transition to OPEN with reason "failure_threshold_reached"
+           - Set opened_at = time.monotonic()
+    
+        IMPORTANT: HALF_OPEN and threshold cases need DIFFERENT reasons
+        and must be handled separately (if/elif, not combined with or).
+        """
+>       raise NotImplementedError("TODO: implement record_failure()")
+E       NotImplementedError: TODO: implement record_failure()
+
+src\reliability_lab\circuit_breaker.py:93: NotImplementedError
+___________________ test_success_threshold_greater_than_one ___________________
+
+    def test_success_threshold_greater_than_one() -> None:
+        cb = CircuitBreaker("test", failure_threshold=1, reset_timeout_seconds=0.05, success_threshold=2)
+>       cb.record_failure()
+
+tests\test_circuit_breaker.py:114: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = CircuitBreaker(name='test', failure_threshold=1, reset_timeout_seconds=0.05, success_threshold=2, state=<CircuitState.CLOSED: 'closed'>, failure_count=0, success_count=0, opened_at=None, transition_log=[])
+
+    def record_failure(self) -> None:
+        """Record a failed call.
+    
+        TODO(student): Implement:
+        1. Increment failure_count, reset success_count to 0
+        2. If in HALF_OPEN state:
+           - Immediately transition to OPEN with reason "probe_failure"
+           - Set opened_at = time.monotonic()
+        3. Else if failure_count >= failure_threshold:
+           - Transition to OPEN with reason "failure_threshold_reached"
+           - Set opened_at = time.monotonic()
+    
+        IMPORTANT: HALF_OPEN and threshold cases need DIFFERENT reasons
+        and must be handled separately (if/elif, not combined with or).
+        """
+>       raise NotImplementedError("TODO: implement record_failure()")
+E       NotImplementedError: TODO: implement record_failure()
+
+src\reliability_lab\circuit_breaker.py:93: NotImplementedError
+_______________ test_gateway_returns_response_with_route_reason _______________
+
+    def test_gateway_returns_response_with_route_reason() -> None:
+        provider = FakeLLMProvider("primary", fail_rate=0.0, base_latency_ms=1, cost_per_1k_tokens=0.001)
+        breaker = CircuitBreaker("primary", failure_threshold=2, reset_timeout_seconds=1)
+        gateway = ReliabilityGateway([provider], {"primary": breaker}, ResponseCache(60, 0.5))
+>       result = gateway.complete("hello world")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_gateway_contract.py:15: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <reliability_lab.gateway.ReliabilityGateway object at 0x0000021A67177550>
+prompt = 'hello world'
+
+    def complete(self, prompt: str) -> GatewayResponse:
+        """Return a reliable response or a static fallback.
+    
+        TODO(student): Implement the full request routing pipeline:
+    
+        1. CACHE CHECK — if self.cache is not None:
+           - Call self.cache.get(prompt) \u2192 (cached_text, score)
+           - If cached_text is not None, return GatewayResponse with:
+             route=f"cache_hit:{score:.2f}", cache_hit=True, latency=0, cost=0
+    
+        2. PROVIDER FALLBACK CHAIN — iterate self.providers in order:
+           - Get the circuit breaker: self.breakers[provider.name]
+           - Try breaker.call(provider.complete, prompt)
+           - On success:
+             a. Store in cache: self.cache.set(prompt, response.text, {"provider": provider.name})
+             b. Determine route: "primary" if first provider, else "fallback"
+             c. Return GatewayResponse with provider info, latency, cost
+           - On ProviderError or CircuitOpenError: save error, continue to next provider
+    
+        3. STATIC FALLBACK — if all providers fail:
+           - Return GatewayResponse with:
+             text="The service is temporarily degraded. Please try again soon."
+             route="static_fallback", error=last_error
+    
+        BONUS TODO: Add cost budget tracking — if cumulative cost exceeds a threshold,
+        skip expensive providers and route to cache or cheaper fallback.
+        """
+>       raise NotImplementedError("TODO: implement complete()")
+E       NotImplementedError: TODO: implement complete()
+
+src\reliability_lab\gateway.py:61: NotImplementedError
+_________________ test_gateway_falls_back_when_primary_fails __________________
+
+    def test_gateway_falls_back_when_primary_fails() -> None:
+        primary = FakeLLMProvider("primary", fail_rate=1.0, base_latency_ms=1, cost_per_1k_tokens=0.01)
+        backup = FakeLLMProvider("backup", fail_rate=0.0, base_latency_ms=1, cost_per_1k_tokens=0.005)
+        breakers = {
+            "primary": CircuitBreaker("primary", failure_threshold=1, reset_timeout_seconds=10),
+            "backup": CircuitBreaker("backup", failure_threshold=3, reset_timeout_seconds=10),
+        }
+        gateway = ReliabilityGateway([primary, backup], breakers)
+>       result = gateway.complete("test query")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_gateway_contract.py:28: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <reliability_lab.gateway.ReliabilityGateway object at 0x0000021A671E8A90>
+prompt = 'test query'
+
+    def complete(self, prompt: str) -> GatewayResponse:
+        """Return a reliable response or a static fallback.
+    
+        TODO(student): Implement the full request routing pipeline:
+    
+        1. CACHE CHECK — if self.cache is not None:
+           - Call self.cache.get(prompt) \u2192 (cached_text, score)
+           - If cached_text is not None, return GatewayResponse with:
+             route=f"cache_hit:{score:.2f}", cache_hit=True, latency=0, cost=0
+    
+        2. PROVIDER FALLBACK CHAIN — iterate self.providers in order:
+           - Get the circuit breaker: self.breakers[provider.name]
+           - Try breaker.call(provider.complete, prompt)
+           - On success:
+             a. Store in cache: self.cache.set(prompt, response.text, {"provider": provider.name})
+             b. Determine route: "primary" if first provider, else "fallback"
+             c. Return GatewayResponse with provider info, latency, cost
+           - On ProviderError or CircuitOpenError: save error, continue to next provider
+    
+        3. STATIC FALLBACK — if all providers fail:
+           - Return GatewayResponse with:
+             text="The service is temporarily degraded. Please try again soon."
+             route="static_fallback", error=last_error
+    
+        BONUS TODO: Add cost budget tracking — if cumulative cost exceeds a threshold,
+        skip expensive providers and route to cache or cheaper fallback.
+        """
+>       raise NotImplementedError("TODO: implement complete()")
+E       NotImplementedError: TODO: implement complete()
+
+src\reliability_lab\gateway.py:61: NotImplementedError
+_____________ test_gateway_returns_static_fallback_when_all_fail ______________
+
+    def test_gateway_returns_static_fallback_when_all_fail() -> None:
+        primary = FakeLLMProvider("primary", fail_rate=1.0, base_latency_ms=1, cost_per_1k_tokens=0.01)
+        backup = FakeLLMProvider("backup", fail_rate=1.0, base_latency_ms=1, cost_per_1k_tokens=0.005)
+        breakers = {
+            "primary": CircuitBreaker("primary", failure_threshold=1, reset_timeout_seconds=10),
+            "backup": CircuitBreaker("backup", failure_threshold=1, reset_timeout_seconds=10),
+        }
+        gateway = ReliabilityGateway([primary, backup], breakers)
+>       result = gateway.complete("test query")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_gateway_contract.py:41: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <reliability_lab.gateway.ReliabilityGateway object at 0x0000021A67203410>
+prompt = 'test query'
+
+    def complete(self, prompt: str) -> GatewayResponse:
+        """Return a reliable response or a static fallback.
+    
+        TODO(student): Implement the full request routing pipeline:
+    
+        1. CACHE CHECK — if self.cache is not None:
+           - Call self.cache.get(prompt) \u2192 (cached_text, score)
+           - If cached_text is not None, return GatewayResponse with:
+             route=f"cache_hit:{score:.2f}", cache_hit=True, latency=0, cost=0
+    
+        2. PROVIDER FALLBACK CHAIN — iterate self.providers in order:
+           - Get the circuit breaker: self.breakers[provider.name]
+           - Try breaker.call(provider.complete, prompt)
+           - On success:
+             a. Store in cache: self.cache.set(prompt, response.text, {"provider": provider.name})
+             b. Determine route: "primary" if first provider, else "fallback"
+             c. Return GatewayResponse with provider info, latency, cost
+           - On ProviderError or CircuitOpenError: save error, continue to next provider
+    
+        3. STATIC FALLBACK — if all providers fail:
+           - Return GatewayResponse with:
+             text="The service is temporarily degraded. Please try again soon."
+             route="static_fallback", error=last_error
+    
+        BONUS TODO: Add cost budget tracking — if cumulative cost exceeds a threshold,
+        skip expensive providers and route to cache or cheaper fallback.
+        """
+>       raise NotImplementedError("TODO: implement complete()")
+E       NotImplementedError: TODO: implement complete()
+
+src\reliability_lab\gateway.py:61: NotImplementedError
+___________________________ test_gateway_uses_cache ___________________________
+
+    def test_gateway_uses_cache() -> None:
+        provider = FakeLLMProvider("primary", fail_rate=0.0, base_latency_ms=1, cost_per_1k_tokens=0.001)
+        breaker = CircuitBreaker("primary", failure_threshold=3, reset_timeout_seconds=1)
+        cache = ResponseCache(60, 0.5)
+        gateway = ReliabilityGateway([provider], {"primary": breaker}, cache)
+>       gateway.complete("cached query")
+
+tests\test_gateway_contract.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <reliability_lab.gateway.ReliabilityGateway object at 0x0000021A67201790>
+prompt = 'cached query'
+
+    def complete(self, prompt: str) -> GatewayResponse:
+        """Return a reliable response or a static fallback.
+    
+        TODO(student): Implement the full request routing pipeline:
+    
+        1. CACHE CHECK — if self.cache is not None:
+           - Call self.cache.get(prompt) \u2192 (cached_text, score)
+           - If cached_text is not None, return GatewayResponse with:
+             route=f"cache_hit:{score:.2f}", cache_hit=True, latency=0, cost=0
+    
+        2. PROVIDER FALLBACK CHAIN — iterate self.providers in order:
+           - Get the circuit breaker: self.breakers[provider.name]
+           - Try breaker.call(provider.complete, prompt)
+           - On success:
+             a. Store in cache: self.cache.set(prompt, response.text, {"provider": provider.name})
+             b. Determine route: "primary" if first provider, else "fallback"
+             c. Return GatewayResponse with provider info, latency, cost
+           - On ProviderError or CircuitOpenError: save error, continue to next provider
+    
+        3. STATIC FALLBACK — if all providers fail:
+           - Return GatewayResponse with:
+             text="The service is temporarily degraded. Please try again soon."
+             route="static_fallback", error=last_error
+    
+        BONUS TODO: Add cost budget tracking — if cumulative cost exceeds a threshold,
+        skip expensive providers and route to cache or cheaper fallback.
+        """
+>       raise NotImplementedError("TODO: implement complete()")
+E       NotImplementedError: TODO: implement complete()
+
+src\reliability_lab\gateway.py:61: NotImplementedError
+___________________________ test_set_and_exact_get ____________________________
+
+cache = <reliability_lab.cache.SharedRedisCache object at 0x0000021A671DC5D0>
+
+    def test_set_and_exact_get(cache: SharedRedisCache) -> None:
+        cache.set("hello world", "response text")
+        cached, score = cache.get("hello world")
+>       assert cached == "response text"
+E       AssertionError: assert None == 'response text'
+
+tests\test_redis_cache.py:54: AssertionError
+_____________________ test_shared_state_across_instances ______________________
+
+    def test_shared_state_across_instances() -> None:
+        """Two SharedRedisCache instances on same Redis should see same data."""
+        c1 = SharedRedisCache(
+            redis_url="redis://localhost:6379/0",
+            ttl_seconds=60,
+            similarity_threshold=0.5,
+            prefix="rl:test:shared:",
+        )
+        c2 = SharedRedisCache(
+            redis_url="redis://localhost:6379/0",
+            ttl_seconds=60,
+            similarity_threshold=0.5,
+            prefix="rl:test:shared:",
+        )
+        c1.flush()
+        c1.set("shared query", "shared response")
+        cached, _ = c2.get("shared query")
+>       assert cached == "shared response"
+E       AssertionError: assert None == 'shared response'
+
+tests\test_redis_cache.py:91: AssertionError
+_______________________ test_false_hit_different_years ________________________
+
+cache = <reliability_lab.cache.SharedRedisCache object at 0x0000021A671EBBD0>
+
+    def test_false_hit_different_years(cache: SharedRedisCache) -> None:
+        cache.set("refund policy for 2024", "old policy")
+        cached, _ = cache.get("refund policy for 2026")
+        assert cached is None
+>       assert len(cache.false_hit_log) >= 1
+E       assert 0 >= 1
+E        +  where 0 = len([])
+E        +    where [] = <reliability_lab.cache.SharedRedisCache object at 0x0000021A671EBBD0>.false_hit_log
+
+tests\test_redis_cache.py:107: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_cache.py::test_exact_match_returns_hit - NotImplementedErro...
+FAILED tests/test_cache.py::test_similar_query_returns_hit - NotImplementedEr...
+FAILED tests/test_cache.py::test_dissimilar_query_returns_miss - NotImplement...
+FAILED tests/test_cache.py::test_ttl_expiry - NotImplementedError: TODO: impl...
+FAILED tests/test_cache.py::test_privacy_query_bypasses_cache - NotImplemente...
+FAILED tests/test_cache.py::test_privacy_query_not_stored - NotImplementedErr...
+FAILED tests/test_cache.py::test_false_hit_detection_different_years - NotImp...
+FAILED tests/test_cache.py::test_same_year_not_flagged_as_false_hit - NotImpl...
+FAILED tests/test_cache.py::test_ngram_similarity_scores - NotImplementedErro...
+FAILED tests/test_circuit_breaker.py::test_starts_closed - NotImplementedErro...
+FAILED tests/test_circuit_breaker.py::test_opens_after_failure_threshold - No...
+FAILED tests/test_circuit_breaker.py::test_does_not_open_below_threshold - No...
+FAILED tests/test_circuit_breaker.py::test_success_resets_failure_count - Not...
+FAILED tests/test_circuit_breaker.py::test_open_transitions_to_half_open_after_timeout
+FAILED tests/test_circuit_breaker.py::test_half_open_closes_on_success - NotI...
+FAILED tests/test_circuit_breaker.py::test_half_open_reopens_on_failure - Not...
+FAILED tests/test_circuit_breaker.py::test_call_raises_circuit_open_error - N...
+FAILED tests/test_circuit_breaker.py::test_call_records_success_and_failure
+FAILED tests/test_circuit_breaker.py::test_transition_log_records_state_changes
+FAILED tests/test_circuit_breaker.py::test_no_duplicate_transitions - NotImpl...
+FAILED tests/test_circuit_breaker.py::test_success_threshold_greater_than_one
+FAILED tests/test_gateway_contract.py::test_gateway_returns_response_with_route_reason
+FAILED tests/test_gateway_contract.py::test_gateway_falls_back_when_primary_fails
+FAILED tests/test_gateway_contract.py::test_gateway_returns_static_fallback_when_all_fail
+FAILED tests/test_gateway_contract.py::test_gateway_uses_cache - NotImplement...
+FAILED tests/test_redis_cache.py::test_set_and_exact_get - AssertionError: as...
+FAILED tests/test_redis_cache.py::test_shared_state_across_instances - Assert...
+FAILED tests/test_redis_cache.py::test_false_hit_different_years - assert 0 >= 1
+28 failed, 7 passed, 7 xfailed in 2.32s

@@ -1,0 +1,41 @@
+[1] Similarity scores (n-gram cosine over words + character 3-grams)
+
+    case                          score
+    ---------------------------- ------
+    identical                     1.000
+    paraphrase (small edit)       0.880
+    paraphrase (article added)    0.901
+    same topic, different intent  0.915
+    related topic                 0.681
+    unrelated                     0.028
+
+[2] Threshold sweep on the 2024/2026 pair — would it be served from cache?
+
+    threshold  above threshold   guardrail verdict
+    ---------  ---------------  ------------------
+         0.75              yes  blocked (false hit)
+         0.80              yes  blocked (false hit)
+         0.85              yes  blocked (false hit)
+         0.90              yes  blocked (false hit)
+         0.92               no                miss
+         0.95               no                miss
+
+[3] False-hit log entry produced by the guardrail
+
+    query      = 'Summarize refund policy for 2026 deadline'
+    cached_key = 'Summarize refund policy for 2024 deadline'
+    score      = 0.915
+    reason     = 'date_or_number_mismatch'
+
+[4] Privacy guardrail — nothing is stored for a sensitive query
+
+    entries stored after 3 set() calls (2 sensitive, 1 safe): 1
+    stored keys: ['Explain circuit breaker states in one paragraph.']
+
+[5] Known blind spot: undated cache entry answers a dated question
+
+    cached : 'Summarize the refund policy for a student who missed the deadline.'
+    asked  : 'Summarize the refund policy for a student who missed the 2026 deadline.'
+    score  : 0.960  (threshold 0.92)
+    served : '[primary] generic refund answer with no deadline year'
+    false_hit_log entries: 0  <-- guardrail did NOT fire

@@ -1,3 +1,5 @@
+# Same workload as default.yaml but backed by the shared Redis cache.
+# Run:  python scripts/run_chaos.py --config configs/redis.yaml --out reports/metrics_redis.json
 providers:
   - name: primary
     fail_rate: 0.25
@@ -13,7 +15,7 @@ circuit_breaker:
   success_threshold: 1
 cache:
   enabled: true
-  backend: memory          # "memory" (default) or "redis" (requires docker compose up -d)
+  backend: redis           # shared cache across gateway instances (requires docker compose up -d)
   ttl_seconds: 300
   similarity_threshold: 0.92
   redis_url: "redis://localhost:6379/0"

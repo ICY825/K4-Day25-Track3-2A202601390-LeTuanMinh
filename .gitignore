@@ -4,5 +4,7 @@ __pycache__/
 .ruff_cache/
 .mypy_cache/
 *.pyc
-reports/metrics.json
-reports/final_report.md
+*.egg-info/
+
+# reports/metrics.json and reports/final_report.md are required
+# deliverables - they are intentionally committed.

@@ -1,0 +1,22 @@
+{
+  "total_requests": 600,
+  "availability": 0.8217,
+  "error_rate": 0.1783,
+  "latency_p50_ms": 236.29,
+  "latency_p95_ms": 315.58,
+  "latency_p99_ms": 320.29,
+  "fallback_success_rate": 0.5202,
+  "cache_hit_rate": 0.3967,
+  "circuit_open_count": 13,
+  "recovery_time_ms": 2392.9533660411835,
+  "estimated_cost": 0.123956,
+  "estimated_cost_saved": 0.238,
+  "scenarios": {
+    "primary_timeout_100": "pass",
+    "primary_flaky_50": "pass",
+    "all_healthy": "pass",
+    "baseline_cached": "pass",
+    "no_cache": "pass",
+    "both_degraded": "pass"
+  }
+}
