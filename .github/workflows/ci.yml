@@ -1,5 +1,12 @@
 name: CI
-on: [push, pull_request]
+
+# workflow_dispatch adds a "Run workflow" button, so CI can be triggered
+# without inventing an empty commit - useful on a fork, where Actions stay
+# disabled until the owner enables them and no run exists to re-run.
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
 jobs:
   test:
     runs-on: ubuntu-latest
